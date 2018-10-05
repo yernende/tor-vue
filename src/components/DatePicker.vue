@@ -14,17 +14,20 @@
     <v-text-field
       slot="activator"
       v-model="date"
-      :label="label"
       prepend-icon="event"
+      :label="label"
       :name="name"
       readonly
       :rules="rules"
     />
-    <v-date-picker v-model="date" :max="max" :pickerDate.sync="pickerDate" no-title scrollable>
-      <v-spacer />
-      <v-btn flat color="primary" @click="menu = false">Cancel</v-btn>
-      <v-btn flat color="primary" @click="$refs.menu.save(date); $emit('change', date)">OK</v-btn>
-    </v-date-picker>
+    <v-date-picker
+      v-model="date"
+      :max="max"
+      :pickerDate.sync="pickerDate"
+      no-title
+      scrollable
+      @input="$refs.menu.save(date); $emit('change', date)"
+    />
   </v-menu>
 </template>
 
